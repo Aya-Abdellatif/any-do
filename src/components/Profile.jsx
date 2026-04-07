@@ -1,25 +1,24 @@
-import myProfile from "../assets/myProfile.avif";
+import myProfile from "../assets/myProfile.png";
 
 const Profile = () => {
-  const user = {
-    name: "Aya Abdellatif",
-    image: myProfile
-  };
+  const user = JSON.parse(localStorage.getItem("currentUser"));
 
-  const total = 3;
-  const completed = 1;
+  const totalTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  const total = totalTasks.length;
+  const completed = totalTasks.filter((task) => task.completed === true).length;
   const pending = total - completed;
 
   return (
     <div className="p-6 max-w-xl mx-auto text-center">
 
       <img
-        src={user.image}
+        src={myProfile}
         alt="profile pic"
         className="w-32 h-32 rounded-full mx-auto mb-4"
       />
 
-      <h1 className="text-2xl font-bold">{user.name}</h1>
+      <h1 className="text-2xl font-bold">{user.fullName}</h1>
 
       <div className="grid grid-cols-3 gap-4 mt-8">
         <div className="bg-white shadow p-4 rounded-lg">
@@ -27,14 +26,14 @@ const Profile = () => {
           <p className="text-gray-500">Total</p>
         </div>
 
-        <div className="bg-green-100 p-4 rounded-lg">
+        <div className="bg-white shadow p-4 rounded-lg">
           <h2 className="text-xl font-bold text-green-600">
             {completed}
           </h2>
           <p>Completed</p>
         </div>
 
-        <div className="bg-red-100 p-4 rounded-lg">
+        <div className="bg-white shadow p-4 rounded-lg">
           <h2 className="text-xl font-bold text-red-600">
             {pending}
           </h2>
