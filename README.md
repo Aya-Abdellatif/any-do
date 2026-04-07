@@ -129,12 +129,3 @@ npm run dev
 ## Author
 
 **Aya Abdellatif**
-
-* Frontend Developer (React)
-* Passionate about building interactive web apps
-
----
-
-لو حابة أظبطهولك كـ **professional GitHub README فيه badges + screenshots + deploy link** قوليلي 🔥
-
-
