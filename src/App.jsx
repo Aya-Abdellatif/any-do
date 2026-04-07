@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Tasks from './components/Tasks'
+import TaskDetails from './components/TaskDetails'
 import Profile from './components/Profile'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
@@ -21,6 +22,7 @@ function App() {
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/tasks" element={<Tasks />} />
+            <Route path="/tasks/:id" element={<TaskDetails />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
 

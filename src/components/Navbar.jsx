@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 const Navbar = () => {
     const navigate = useNavigate();
 
-    const [currentUser, setCurrentUser] = useState(null);
+    /*const [currentUser, setCurrentUser] = useState(null);
     useEffect(() => {
         setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
-  }, []);
-    //const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  }, []);*/
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     const handleLogout = () => {
         localStorage.removeItem("currentUser");
-        setCurrentUser(null);
+        //setCurrentUser(null);
         navigate("/signin");
     };
 
