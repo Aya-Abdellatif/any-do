@@ -24,12 +24,12 @@ const Navbar = () => {
                     <img src={logo} alt="Logo" className="w-30 h-30" />
                 </Link>
             </div>
-            <div className="flex items-center gap-6 text-black-700 font-semibold">
-                <Link to="/" className="hover:text-blue-500">Home</Link>
+            <div className="flex items-center gap-6 text-gray-600 font-semibold text-lg lg:text-xl">
+                <Link to="/" className="hover:text-black">Home</Link>
                 {currentUser ? (
                     <>
-                        <Link to="/tasks" className="hover:text-blue-500">Tasks</Link>
-                        <Link to="/profile" className="hover:text-blue-500">Profile</Link>
+                        <Link to="/tasks" className="hover:text-black">Tasks</Link>
+                        <Link to="/profile" className="hover:text-black">Profile</Link>
                         <button
                             onClick={handleLogout}
                             className="border border-blue-400 text-blue-500 px-6 py-2 rounded-full hover:bg-blue-500 hover:text-white"
