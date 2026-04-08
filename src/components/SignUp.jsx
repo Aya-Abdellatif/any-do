@@ -43,7 +43,7 @@ const SignUp = () => {
         <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
             <div className="w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-xl flex">
                 <div className="relative flex-1 bg-gray-50 flex items-center justify-center p-12 overflow-hidden">
-                    <div className="absolute inset-0 grid grid-cols-4 gap-y-16 gap-x-12 p-12 pt-18 content-start pointer-events-none">
+                    <div className="absolute inset-0 grid grid-cols-4 gap-y-16 gap-x-12 p-12 pt-25 content-start pointer-events-none">
                         {dots.map((_, i) => (
                             i >= 8 && i <= 11 ? (
                                 <span key={i} />
@@ -121,7 +121,7 @@ const SignUp = () => {
                         >
                             Create Account
                         </button>
-                        <p className="text-sm text-center mt-4">
+                        <p className="text-sm text-center mt-4 text-gray-700">
                             Already have an account?{" "}
                             <Link to="/signin" className="text-blue-500">
                                 Sign In

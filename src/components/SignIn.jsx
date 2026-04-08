@@ -104,7 +104,7 @@ const SignIn = () => {
                         >
                             Sign In
                         </button>
-                        <p className="text-sm text-center mt-4">
+                        <p className="text-sm text-center mt-4 text-gray-700">
                             Create an account?{" "}
                             <Link to="/signup" className="text-blue-500">
                                 Sign Up
