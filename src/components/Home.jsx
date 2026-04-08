@@ -18,8 +18,8 @@ const Home = () => {
 
                     <div className="w-40 h-1 bg-blue-500 mx-auto mt-3 rounded-full"></div>
 
-                    <p className="text-gray-600 mt-6 text-lg">
-                        Easily manage your personal tasks, family projects, and team’s work all in one place and stay productive.
+                    <p className="text-gray-600 mt-6 text-2xl mb-15">
+                        Easily manage your personal tasks, family projects, and <br></br>team’s work all in one place and stay productive.
                     </p>
 
                     <div className="mt-8 flex justify-center">
@@ -28,8 +28,10 @@ const Home = () => {
                         </Link>) : (<Link to="/signup" className="bg-blue-500 text-white px-15 py-2 rounded-3xl text-2xl font-semibold hover:bg-blue-600">
                             Get Started. It's FREE
                         </Link>)}
-
                     </div>
+                    <p className="text-gray-600 mt-6 text-lg">
+                        Free Forever. No credit card.
+                    </p>
 
                 </div>
             </div>
