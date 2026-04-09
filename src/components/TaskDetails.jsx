@@ -1,14 +1,21 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TaskDetails = () => {
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [task, setTask] = useState(null);
 
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const users = JSON.parse(localStorage.getItem("users"));
+
   // Load task
   useEffect(() => {
-    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    const foundTask = savedTasks.find(task => task.id === Number(id));
+    const user = users.find(u => u.email === currentUser.email);
+    //const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    const foundTask = user?.tasks.find(task => task.id === Number(id));
     setTask(foundTask);
   }, [id]);
 
@@ -16,13 +23,25 @@ const TaskDetails = () => {
     const updatedTask = { ...task, [field]: value };
     setTask(updatedTask);
 
-    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    //const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-    const newTasks = savedTasks.map(t =>
+    /*const newTasks = savedTasks.map(t =>
       t.id === updatedTask.id ? updatedTask : t
-    );
+    );*/
 
-    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    const updatedUsers = users.map(u => {
+      if (u.email === currentUser.email) {
+        const newTasks = u.tasks.map(t =>
+          t.id === updatedTask.id ? updatedTask : t
+        );
+
+        return { ...u, tasks: newTasks };
+      }
+      return u;
+    });
+
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
 
   if (!task) return <p className="p-6">Task not found</p>;
@@ -70,7 +89,7 @@ const TaskDetails = () => {
             placeholder="Enter name..."
           />
         </div>
-
+      <button onClick={()=>{navigate("/tasks")}}>Return to Tasks</button>
       </div>
     </div>
   );

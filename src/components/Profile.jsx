@@ -1,9 +1,15 @@
 import myProfile from "../assets/myProfile.png";
 
 const Profile = () => {
-  const user = JSON.parse(localStorage.getItem("currentUser"));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const users = JSON.parse(localStorage.getItem("users"));
+    const user = users.find(u => u.email === currentUser.email);
+  
+    //const [tasks, setTasks] = useState(user?.tasks || []);
+  
+  //const user = JSON.parse(localStorage.getItem("currentUser"));
 
-  const totalTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const totalTasks = user?.tasks || [];
 
   const total = totalTasks.length;
   const completed = totalTasks.filter((task) => task.completed === true).length;

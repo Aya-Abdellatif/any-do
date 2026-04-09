@@ -4,10 +4,17 @@ import ToDoFilter from "../components/ToDoFilter";
 import ToDoList from "../components/ToDoList";
 
 const Tasks = () => {
-  const [tasks, setTasks] = useState(() => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const users = JSON.parse(localStorage.getItem("users"));
+  const user = users.find(u => u.email === currentUser.email);
+
+  const [tasks, setTasks] = useState(user?.tasks || []);
+
+
+  /*const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem("tasks");
     return savedTasks ? JSON.parse(savedTasks) : [];
-  });
+  });*/
 
   const [input, setInput] = useState("");
   const [filter, setFilter] = useState("all");
@@ -49,7 +56,17 @@ const Tasks = () => {
   });
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    //localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    const updatedUsers = users.map( u => {
+      if(u.email === currentUser.email){
+        return {...u, tasks: tasks};
+      }
+      return u;
+    });
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
   }, [tasks]);
 
   return (

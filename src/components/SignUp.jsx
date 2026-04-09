@@ -32,7 +32,12 @@ const SignUp = () => {
                 return;
             }
 
-            users.push(values);
+            const newUser = {
+                ...values,
+                tasks: []
+            };
+            users.push(newUser);
+            //users.push(values);
             localStorage.setItem("users", JSON.stringify(users));
             navigate("/signin");
         }
